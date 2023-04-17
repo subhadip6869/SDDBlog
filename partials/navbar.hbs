@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+	<div class="container-fluid">
+		<h1 class="navbar-brand">Subhadip</h1>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon" id="navtoggle" onclick="navtoggle()"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" id="home" aria-current="page" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="resume" href="/resume">Resume</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						My Works
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						{{#each work_data}}
+						<a class="dropdown-item" href="/works/{{this.work_slug}}">{{this.work_type}}</a>
+						{{/each}}
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="resume" href="/admin-login">Admin</a>
+				</li>
+			</ul>
+			<span class="navbar-text">
+				<a href='{{social_links.facebook}}' target="_blank"><i class="bi bi-facebook"></i></a>
+				<a href='{{social_links.instagram}}' target="_blank"><i class="bi bi-instagram"></i></a>
+				<a href='{{social_links.linkedin}}' target="_blank"><i class="bi bi-linkedin"></i></a>
+				<a href='{{social_links.twitter}}' target="_blank"><i class="bi bi-twitter"></i></a>
+			</span>
+		</div>
+	</div>
+</nav>

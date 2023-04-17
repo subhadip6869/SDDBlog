@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	{{>bootstrap_include}}
+	{{>google_font_include}}
+	<link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		{{>navbar}}
+
+		<div class="container-md mt-5">
+			<div class="about-heading text-center pt-3">Personal Details</div>
+			<div class="underline"></div>
+			<div class="row align-items-center gx-3 gy-3">
+				<div class="col-md-12 interests">
+					<div class="element">
+						<table class="table table-striped">
+							<tbody>
+								<tr>
+									<td class="left"><i class="bi bi-person"></i> Name:</td>
+									<td class="right">{{personal.name}}</td>
+								</tr>
+								<tr>
+									<td class="left"><i class="bi bi-envelope"></i> Email:</td>
+									<td class="right">{{personal.email}}</td>
+								</tr>
+								<tr>
+									<td class="left"><i class="bi bi-geo-alt"></i> From:</td>
+									<td class="right">{{personal.location}}</td>
+								</tr>
+								<tr>
+									<td class="left"><i class="bi bi-translate"></i> Languages:</td>
+									<td class="right">Bengali, English & Hindi</td>
+								</tr>
+								<tr>
+									<td class="left"><i class="bi bi-calendar3"></i> Date of birth:</td>
+									<td class="right">April 29, 2001</td>
+								</tr>
+								<tr>
+									<td class="left"><i class="bi bi-globe2"></i> Nationality:</td>
+									<td class="right">Indian</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-md">
+			<div class="about-heading text-center pt-3">Education Details</div>
+			<div class="underline"></div>
+			<div class="row align-items-center gx-3 gy-3">
+				{{#each education_data}}
+				<div class="col-md-6 interests">
+					<div class="element">
+						<p class="fw-bold text-white resume-year px-1 mb-1">{{this.edu_duration}}</p>
+						<p class="fs-4 fw-bold">{{this.edu_degree}}</p>
+						<p class="descr opacity-50">{{this.edu_desc}}</p>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+
+		<div class="container-md">
+			<div class="about-heading text-center pt-3">Computer Knowledges</div>
+			<div class="underline"></div>
+			<div class="row align-items-center gx-3 gy-3">
+				{{#each knowledge_data}}
+				<div class="col-sm-4 interests">
+					<div class="element">
+						<p class="fs-5 fw-bold mb-1">{{this.lang_name}}</p>
+						<p class="fs-6 mb-0">{{this.lang_percent}}%</p>
+						<div class="progressbar w-100">
+							<div class="progress text-white prog-knowledge" style="width: {{this.lang_percent}}%;"></div>
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+
+		{{>footer}}
+	</div>
+</body>
+
+</html>
+
+<script>
+	document.getElementById('home').classList.remove('active');
+	document.getElementById('resume').classList.add('active');
+	document.getElementById('works').classList.remove('active');
+</script>

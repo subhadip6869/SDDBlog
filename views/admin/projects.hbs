@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	{{>bootstrap_include}}
+	{{>google_font_include}}
+	<link rel="stylesheet" href="../css/nav.css">
+	<link rel="stylesheet" href="../css/footer.css">
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/admin_login.css">
+	<link rel="stylesheet" href="../css/admin_nav.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		{{>admin_dash_nav}}
+		<div class="container-md mt-5">
+			<div class="about-heading text-center pt-3">Add New Project</div>
+			<div class="underline"></div>
+			<div class="container-sm">
+				<form action="/update-admin" method="post">
+					<div class="form-floating mb-3">
+						<input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" required maxlength="30" value="{{admin_email}}" name="amail" readonly="readonly">
+						<label for="floatingEmail">Email Address</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="floatingFName" placeholder="Enter First Name" required maxlength="10" name="fname">
+						<label for="floatingFName">First Name</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="floatingLName" placeholder="Enter Last Name" required maxlength="9" name="lname">
+						<label for="floatingLName">Last Name</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="floatingPass" placeholder="Password" required maxlength="16" minlength="8" name="apass">
+						<label for="floatingPass">Password</label>
+					</div>
+					<button type="submit" class="btn btn-dark form-control">Update Details</button>
+				</form>
+			</div>
+		</div>
+
+
+		<div class="about-heading text-center pt-3">Project List</div>
+		<div class="underline"></div>
+		<div class="container-md pb-3">
+			<table class="table table-striped table-bordered table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th>Category</th>
+						<th>Project Name</th>
+						<th>Project Version</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each project_data}}
+					<tr>
+						<td>{{this.work_type}}</td>
+						<td>{{this.project_name}}</td>
+						<td>{{this.project_ver}}</td>
+						<td><a href="/update-project/{{this._id}}"><i class="bi bi-trash3"></i></a></td>
+						<td><a href="/delete-project/{{this._id}}"><i class="bi bi-trash3"></i></a></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+
+</html>

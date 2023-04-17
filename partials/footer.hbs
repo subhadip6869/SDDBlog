@@ -1,0 +1,23 @@
+<div class="container-fluid-lg text-center p-3 mt-3 text-white footer">
+	<p class="fs-5">Thanks for visiting here! :)</p>
+	<div class="links">
+		<div class="row justify-content-start gx-4 gy-3">
+			<div class="col text-start">
+				<div class="fw-bolder text-uppercase list-heading">Links</div>
+				<div class="fs-6"><a href="/" class="text-white">Home</a></div>
+				<div class="fs-6"><a href="/resume" class="text-white">Resume</a></div>
+			</div>
+			<div class="col text-start">
+				<div class="fw-bolder text-uppercase list-heading">Projects</div>
+				{{#each work_data}}
+					<div class="fs-6"><a href="/works/{{this.work_slug}}" class="text-white">{{this.work_type}}</a></div>
+				{{/each}}
+			</div>
+			<div class="col-md-4 text-start contact">
+				<div class="fw-bolder text-uppercase list-heading">Contact</div>
+				<div class="fs-6"><i class="bi bi-telegram"></i> <a href='{{social_links.telegram}}' class="text-white">subhadip6869</a></div>
+				<div class="fs-6"><i class="bi bi-envelope-fill"></i> <a href="mailto:{{personal.email}}" class="text-white">{{personal.email}}</a></div>
+			</div>
+		</div>
+	</div>
+</div>

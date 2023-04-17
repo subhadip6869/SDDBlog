@@ -1,0 +1,22 @@
+{
+  "name": "sddblog",
+  "version": "1.0.0",
+  "description": "Subhadip Dutta personal blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js -e js,hbs,json,css"
+  },
+  "author": "Subhadip Dutta",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "hbs": "^4.2.0",
+    "mongodb": "^5.2.0",
+    "mongoose": "^7.0.3",
+    "slugify": "^1.6.6"
+  }
+}

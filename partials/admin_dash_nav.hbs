@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+    <div class="container-fluid">
+        <h1 class="navbar-brand">Admin Panel</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" id="navtoggle" onclick="navtoggle()"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" id="profile" aria-current="page" href="/admin/dashboard">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="projects" href="/admin/projects">Projects</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        My Works
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {{#each work_data}}
+                        <a class="dropdown-item" href="/works/{{this.work_slug}}">{{this.work_type}}</a>
+                        {{/each}}
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="resume" href="/admin-login">Admin</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                {{admin_name}} &bullet;
+                <a href='/logout'>Logout</a>
+            </span>
+        </div>
+    </div>
+</nav>

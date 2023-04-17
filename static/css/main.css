@@ -1,0 +1,176 @@
+* {
+	font-family: 'Didact Gothic', sans-serif;
+}
+.wrapper{
+	height:  100%;
+	width: 100%;
+	position: absolute;
+}
+.background-image {
+	height: 100%;
+	background-image: url('https://picsum.photos/840/480');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.background-image::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: inherit;
+	height: inherit;
+	background-image: linear-gradient(to bottom, #696969, #0c0c0c);
+	opacity: 0.8;
+}
+.background-image::after {
+	content: "\00BB";
+    position: absolute;
+    bottom: 0;
+    width: fit-content;
+    margin: auto;
+    left: 13px;
+    right: 0;
+    transform: rotate(90deg);
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 4px 5px #000000a3;
+	animation: arrowmove 1.5s infinite;
+	animation-direction: alternate;
+}
+@keyframes arrowmove {
+	from {
+		bottom: 10px;
+		opacity: 0;
+	}
+	to {
+		bottom: 0;
+		opacity: 1;
+	}
+}
+
+.myrow {
+	height: 100%;
+	position: relative;
+}
+.photo {
+	position: relative;
+    width: auto;
+    height: 30vh;
+    border-radius: 50%;
+	left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 4px 4px 6px black;
+}
+.imgdiv {
+	border-right: 2px solid white;
+}
+
+.welcome-text {
+	font-family: 'Maven Pro', sans-serif;
+	font-size: 2rem;
+	line-height: 1;
+}
+.name {
+	font-family: 'Maven Pro', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 4px 4px 6px black;
+	color: #ffff8e;
+	line-height: 1;
+}
+.text-description {
+	font-family: 'Maven Pro', sans-serif;
+	line-height: 3;
+	opacity: 0.7;
+}
+
+.link-btn {
+    background-color: transparent;
+    color: #08bd80;
+    border-radius: 20px;
+    border-color: #08bd80;
+    border-width: 2px;
+    outline: none;
+}
+
+.link-btn:hover {
+    color: #ffffff;
+    background-color: #08bd80;
+}
+.msg:hover {
+	color: #ffffff;
+	background-color: #08bd80;
+}
+
+.about-heading {
+	color: #08bd80;
+	font-weight: bold;
+	font-size: xx-large;
+}
+.underline {
+	background-color: #212529;
+	width: 8ch;
+	height: 2px;
+	border-radius: 20px;
+	margin: 0 auto 2ch auto;
+}
+.description p {
+	margin-bottom: 5px;
+}
+.about-section, .interests {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+.left {
+	color: #08bd80;;
+}
+.table-striped>tbody>tr:nth-child(odd)> .left {
+	color: #08bd80;
+}
+
+.progressbar {
+	background-color: #f2f2f2;
+	border: 1px solid #08bd80;
+	border-radius: 20px;
+	padding: 1px;
+}
+.progress {
+	background-color: #08bd80;
+	height: auto;
+	padding: 0 10px;
+	font-size: x-small;
+	font-weight: bolder;
+	border-radius: 20px;
+}
+
+
+
+
+
+@media screen and (max-width: 989px) {
+	.photo {
+		height: 25vh;
+	}
+	.imgdiv {
+		border: none;
+	}
+	.welcome-text {
+		font-size: 1.5rem;
+	}
+	.name {
+		font-size: 2rem;
+	}
+	.about-heading, .description p {
+		text-align: center;
+	}
+}
+
+
+
+.resume-year {
+	background-color: #08bd80;
+	width: fit-content;
+	border-radius: 5px;
+}
+.prog-knowledge {
+	height: 5px;
+}
