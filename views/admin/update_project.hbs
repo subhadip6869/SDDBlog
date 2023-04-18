@@ -27,11 +27,20 @@
                             maxlength="30" value="{{project_data._id}}" name="p_id" readonly="readonly">
                         <label for="floatingEmail">Project ID</label>
                     </div>
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="p_type">
+                    <div class="form-floating mb-3">
+						<input type="text" class="form-control" list="datalistOptions" id="floatingPTypes" placeholder="Type to search project types..." maxlength="50" name="p_type" required value="{{project_data.work_type}}">
+						<datalist id="datalistOptions">
+							{{#each work_list}}
+								<option value="{{this.work_type}}">{{this.work_type}}</option>
+							{{/each}}
+						</datalist>
+						<label for="floatingPTypes">Project Types</label>
+					</div>
+                    {{!-- <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="p_type">
                         {{#each work_list}}
                             <option value="{{this.work_type}}" {{#ifCond this.work_type '==' this.project_type}}selected{{/ifCond}}>{{this.work_type}}</option>
                         {{/each}}
-                    </select>
+                    </select> --}}
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingPName" placeholder="Enter Project Name"
                             required maxlength="50" name="p_name" value="{{project_data.project_name}}">

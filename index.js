@@ -239,9 +239,6 @@ app.get("/update-project/:id", async(req, res) => {
             data_copy["admin_email"] = admindata.admin_email;
             data_copy["project_data"] = await ProjectList.findOne({_id: project_id});
             data_copy["work_list"] = await WorkList.find().sort({work_type: 1});
-            for (let i = 0; i < data_copy.work_list.length; i++) {
-                data_copy["work_list"][i]["project_type"] = data_copy.project_data.work_type;
-            }
             res.render("admin/update_project.hbs", data_copy);
         } else {
             res.redirect("/admin-login");
