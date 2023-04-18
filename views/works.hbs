@@ -27,9 +27,14 @@
 						<p class="fw-bold fs-4 px-1 mb-1">{{this.project_name}}</p>
 						<p class="opacity-50 mb-1">Version: {{this.project_ver}}</p>
 						<p class="mb-1">{{this.project_desc}}</p>
-						<a class="btn link-btn px-2 py-1" href="{{this.project_link}}">Download <i class="bi bi-cloud-arrow-down-fill"></i></a>
 						{{#if this.project_link_play}}
-							<a class="btn link-btn px-2 py-1" href="{{this.project_link_play}}">Google Play <i class="fa-brands fa-google-play"></i></a>
+							<a class="btn link-btn px-2 py-1" href="{{this.project_link}}" target="_blank">Download <i class="bi bi-cloud-arrow-down-fill"></i></a>
+						{{/if}}
+						{{#if this.project_link_play}}
+							<a class="btn link-btn px-2 py-1" href="{{this.project_link_play}}" target="_blank">Google Play <i class="fa-brands fa-google-play"></i></a>
+						{{/if}}
+						{{#if this.project_explore}}
+							<a class="btn link-btn px-2 py-1" href="{{this.project_explore}}" target="_blank">Explore <i class="bi bi-box-arrow-up-right"></i></a>
 						{{/if}}
 					</div>
 				</div>

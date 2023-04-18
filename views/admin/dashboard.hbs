@@ -37,7 +37,7 @@
 						<label for="floatingLName">Last Name</label>
 					</div>
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="floatingPass" placeholder="Password" required maxlength="16" minlength="8" name="apass">
+						<input type="password" class="form-control" id="floatingPass" placeholder="Password" required maxlength="16" minlength="8" name="apass">
 						<label for="floatingPass">Password</label>
 					</div>
 					<button type="submit" class="btn btn-dark form-control">Update Details</button>
@@ -46,5 +46,10 @@
 		</div>
 	</div>
 </body>
+
+<script>
+	document.getElementById('profile').classList.add('active');
+	document.getElementById('projects').classList.remove('active');
+</script>
 
 </html>

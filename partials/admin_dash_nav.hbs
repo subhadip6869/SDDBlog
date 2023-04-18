@@ -13,20 +13,6 @@
                 <li class="nav-item">
                     <a class="nav-link" id="projects" href="/admin/projects">Projects</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        My Works
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {{#each work_data}}
-                        <a class="dropdown-item" href="/works/{{this.work_slug}}">{{this.work_type}}</a>
-                        {{/each}}
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="resume" href="/admin-login">Admin</a>
-                </li>
             </ul>
             <span class="navbar-text">
                 {{admin_name}} &bullet;
