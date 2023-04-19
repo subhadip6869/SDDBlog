@@ -1,5 +1,6 @@
 * {
 	font-family: 'Didact Gothic', sans-serif;
+	box-sizing: border-box;
 }
 .wrapper{
 	height:  100%;

@@ -20,7 +20,7 @@
 			<div class="underline"></div>
 			<div class="row align-items-center gx-3 gy-3">
 				<div class="col-md-12 interests">
-					<div class="element">
+					<div class="element px-3 py-1">
 						<table class="table table-striped">
 							<tbody>
 								<tr>
@@ -59,8 +59,8 @@
 			<div class="underline"></div>
 			<div class="row align-items-center gx-3 gy-3">
 				{{#each education_data}}
-				<div class="col-md-6 interests">
-					<div class="element">
+				<div class="col-md-6">
+					<div class="element interests px-3 py-1">
 						<p class="fw-bold text-white resume-year px-1 mb-1">{{this.edu_duration}}</p>
 						<p class="fs-4 fw-bold">{{this.edu_degree}}</p>
 						<p class="descr opacity-50">{{this.edu_desc}}</p>
@@ -73,10 +73,10 @@
 		<div class="container-md">
 			<div class="about-heading text-center pt-3">Computer Knowledges</div>
 			<div class="underline"></div>
-			<div class="row align-items-center gx-3 gy-3">
+			<div class="row align-items-center gx-2 gy-2">
 				{{#each knowledge_data}}
-				<div class="col-sm-4 interests">
-					<div class="element">
+				<div class="col-sm-4">
+					<div class="element interests px-3 py-1">
 						<p class="fs-5 fw-bold mb-1">{{this.lang_name}}</p>
 						<p class="fs-6 mb-0">{{this.lang_percent}}%</p>
 						<div class="progressbar w-100">
@@ -85,6 +85,34 @@
 					</div>
 				</div>
 				{{/each}}
+			</div>
+		</div>
+
+		<div class="container-md">
+			<div class="about-heading text-center pt-3">Achievements</div>
+			<div class="underline"></div>
+			<div class="row align-items-center gx-3 gy-3">
+				<div class="col-sm-12 col-md-6 col-lg-4">
+					<div class="card" style="width: 18rem; margin: auto;">
+						<img src="/certificates/python_hackerrank.jpg" class="card-img-top" alt="python_hackerrank">
+						<div class="card-body">
+							<h5 class="card-title">Python (Basic)</h5>
+							<p class="card-text">Certificate verified by HackerRank</p>
+							<a href="https://www.hackerrank.com/certificates/d1ac59d429fb" target="_blank" class="btn btn-dark">See Certificate <i class="bi bi-box-arrow-up-right"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-lg-4">
+					<div class="card" style="width: 18rem; margin: auto;">
+						<img src="/certificates/javascript_hackerrank.jpg" class="card-img-top" alt="python_hackerrank">
+						<div class="card-body">
+							<h5 class="card-title">JavaScript (Basic)</h5>
+							<p class="card-text">Certificate verified by HackerRank</p>
+							<a href="https://www.hackerrank.com/certificates/4f1b284ac9b5" target="_blank" class="btn btn-dark">See Certificate <i class="bi bi-box-arrow-up-right"></i></a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -109,8 +109,8 @@ app.get("/", async(req, res) => {
 app.get("/resume", async(req, res) => {
     let data_copy = JSON.parse(JSON.stringify(data));
     data_copy["title"] = "Subhadip | Resume";
-    data_copy["knowledge_data"] = await Knowledge.find();
-    data_copy["education_data"] = await Education.find();
+    data_copy["knowledge_data"] = await Knowledge.find().sort({lang_name: 1});
+    data_copy["education_data"] = await Education.find().sort({edu_duration: -1});
     data_copy["work_data"] = await fetch_work_data();
     res.render("resume.hbs", data_copy);
 });
