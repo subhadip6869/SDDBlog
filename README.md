@@ -66,6 +66,9 @@ Create a `netlify.toml` file at the root of your project with the following cont
 
 This configuration tells Netlify to use the `functions` located in the functions folder and sets up a redirect to your API.
 
+### 4. Configure Environment Variables
+If you have any `.env` file for your project remember to upload your environment variables to `Site Configuration` > `Environment Variables` inside your project at Netlify.
+
 ## Deploy Your Application
 To deploy your application to Netlify, run the following command:
 
