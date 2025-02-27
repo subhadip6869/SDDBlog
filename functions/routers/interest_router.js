@@ -17,11 +17,14 @@ interestRouter.post("/", async (req, res) => {
             skill_percent: skill_percent,
         } = req.body;
 
+        let signature = req.headers["x-appwrite-signature"];
+
         const interest = await createInterest({
             intr_icon,
             intr_title,
             intr_desc,
             skill_percent,
+            signature,
         });
         res.status(201).json(interest);
     } catch (error) {
@@ -44,6 +47,7 @@ interestRouter.get("/", async (req, res) => {
 });
 
 interestRouter.put("/", async (req, res) => {
+    let signature = req.headers["x-appwrite-signature"];
     try {
         const {
             bootstrap_icon_class: intr_icon,
@@ -56,6 +60,7 @@ interestRouter.put("/", async (req, res) => {
             intr_title,
             intr_desc,
             skill_percent,
+            signature,
         });
         res.status(200).json(interest);
     } catch (error) {
@@ -64,8 +69,9 @@ interestRouter.put("/", async (req, res) => {
 });
 
 interestRouter.delete("/", async (req, res) => {
+    let signature = req.headers["x-appwrite-signature"];
     try {
-        await deleteInterest(req.query.id);
+        await deleteInterest(req.query.id, { signature });
         res.status(200).json({ message: "Interest data deleted successfully" });
     } catch (error) {
         res.status(error.code || 500).json({ error: error.message });

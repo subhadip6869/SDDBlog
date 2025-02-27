@@ -1,5 +1,5 @@
 const { Query, ID } = require("node-appwrite");
-const { db } = require("./config");
+const { db, generateDBAuth } = require("./config");
 
 const _databaseId = process.env.APPWRITE_DATABASE_ID;
 const _collectionId = "interests";
@@ -9,7 +9,9 @@ async function createInterest({
     intr_title,
     intr_desc,
     skill_percent,
+    signature,
 }) {
+    const database = generateDBAuth({ jwt: signature });
     const _documentId = ID.unique();
     const interestData = {
         intr_icon,
@@ -17,7 +19,7 @@ async function createInterest({
         intr_desc,
         skill_percent,
     };
-    await db.createDocument(
+    await database.createDocument(
         _databaseId,
         _collectionId,
         _documentId,
@@ -58,9 +60,10 @@ async function getInterestById(id) {
 
 async function updateInterest(
     id,
-    { intr_icon, intr_title, intr_desc, skill_percent }
+    { intr_icon, intr_title, intr_desc, skill_percent, signature }
 ) {
-    const data = await db.updateDocument(
+    let database = generateDBAuth({ jwt: signature });
+    const data = await database.updateDocument(
         _databaseId,
         _collectionId,
         id,
@@ -80,8 +83,9 @@ async function updateInterest(
     return data;
 }
 
-async function deleteInterest(id) {
-    await db.deleteDocument(_databaseId, _collectionId, id);
+async function deleteInterest(id, { signature }) {
+    let database = generateDBAuth({ jwt: signature });
+    await database.deleteDocument(_databaseId, _collectionId, id);
 }
 
 module.exports = {
