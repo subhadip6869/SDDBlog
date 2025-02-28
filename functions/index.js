@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { interestRouter } = require("./routers");
+const { interestRouter, educationRouter } = require("./routers");
 const express = require("express");
 const app = express();
 const router = express.Router();
@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 router.use("/interests", interestRouter);
+router.use("/education", educationRouter);
 
 app.use("/api", router);
 app.listen(PORT, () => {
