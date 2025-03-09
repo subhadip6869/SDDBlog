@@ -98,7 +98,6 @@ projectRouter.put("/", async (req, res) => {
 // get project categories
 projectRouter.get("/categories", async (req, res) => {
 	try {
-		console.log(req.headers);
 		let project = await getProjectCategories();
 		res.status(200).json(project);
 	} catch (error) {

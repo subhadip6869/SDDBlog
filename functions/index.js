@@ -8,6 +8,17 @@ const {
 } = require("./routers");
 const express = require("express");
 const app = express();
+
+app.use(
+	cors({
+		origin: "*",
+		methods: "GET,PUT,POST,DELETE",
+		credentials: true,
+		allowedHeaders: "Content-Type, Authorization",
+	})
+);
+app.use(express.urlencoded({ extended: true }));
+
 const router = express.Router();
 
 const HOST = process.env.HOST || "http://localhost";
@@ -20,7 +31,6 @@ router.use("/projects", projectRouter);
 router.use("/skills", skillRouter);
 
 app.use("/api", router);
-app.use(cors());
 
 app.listen(PORT, () => {
 	console.log(`Server running at ${HOST}:${PORT}`);

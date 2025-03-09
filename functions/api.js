@@ -11,6 +11,16 @@ const {
 } = require("./routers");
 
 const app = express();
+
+app.use(
+	cors({
+		origin: "*",
+		methods: "GET,PUT,POST,DELETE",
+		credentials: true,
+		allowedHeaders: "Content-Type, Authorization",
+	})
+);
+
 const router = express.Router();
 app.use(express.json());
 
@@ -20,6 +30,5 @@ router.use("/projects", projectRouter);
 router.use("/skills", skillRouter);
 
 app.use("/api", router);
-app.use(cors({ origin: "*" }));
 
 module.exports.handler = serverless(app);
