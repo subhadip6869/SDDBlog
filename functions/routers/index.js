@@ -1,4 +1,5 @@
 const educationRouter = require("./education_router");
 const interestRouter = require("./interest_router");
+const projectRouter = require("./projects_router");
 
-module.exports = { interestRouter, educationRouter };
+module.exports = { interestRouter, educationRouter, projectRouter };
