@@ -6,7 +6,12 @@ const CustomNavbar = () => {
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
-		fetch("https://dsubha.netlify.app/api/projects/categories")
+		fetch("https://dsubha.netlify.app/api/projects/categories", {
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "http://localhost:5173/",
+			},
+		})
 			.then((res) => res.json())
 			.then((data) => setCategories(data))
 			.catch((err) => {
