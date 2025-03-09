@@ -1,22 +1,30 @@
 {
-  "name": "sddblog",
-  "version": "1.0.0",
-  "description": "Subhadip Dutta personal blog",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js -e js,hbs,json,css"
-  },
-  "author": "Subhadip Dutta",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.6",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.1",
-    "hbs": "^4.2.0",
-    "mongodb": "^5.2.0",
-    "mongoose": "^7.0.3",
-    "slugify": "^1.6.6"
-  }
+	"name": "sddblog",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"proxy": "https://dsubha.netlify.app",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"lint": "eslint .",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"bootstrap": "^5.3.3",
+		"react": "^19.0.0",
+		"react-bootstrap": "^2.10.9",
+		"react-dom": "^19.0.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.21.0",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
+		"@vitejs/plugin-react": "^4.3.4",
+		"eslint": "^9.21.0",
+		"eslint-plugin-react-hooks": "^5.1.0",
+		"eslint-plugin-react-refresh": "^0.4.19",
+		"globals": "^15.15.0",
+		"vite": "^6.2.0"
+	}
 }
