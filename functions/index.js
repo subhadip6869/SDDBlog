@@ -1,5 +1,11 @@
 require("dotenv").config();
-const { interestRouter, educationRouter, projectRouter, skillRouter } = require("./routers");
+const cors = require("cors");
+const {
+	interestRouter,
+	educationRouter,
+	projectRouter,
+	skillRouter,
+} = require("./routers");
 const express = require("express");
 const app = express();
 const router = express.Router();
@@ -14,6 +20,8 @@ router.use("/projects", projectRouter);
 router.use("/skills", skillRouter);
 
 app.use("/api", router);
+app.use(cors());
+
 app.listen(PORT, () => {
-    console.log(`Server running at ${HOST}:${PORT}`);
+	console.log(`Server running at ${HOST}:${PORT}`);
 });

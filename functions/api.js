@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const serverless = require("serverless-http");
+const cors = require("cors");
 const { interestRouter, educationRouter, projectRouter, skillRouter } = require("./routers");
 
 const app = express();
@@ -14,5 +15,6 @@ router.use("/projects", projectRouter);
 router.use("/skills", skillRouter);
 
 app.use("/api", router);
+app.use(cors());
 
 module.exports.handler = serverless(app);
