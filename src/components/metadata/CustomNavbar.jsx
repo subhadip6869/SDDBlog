@@ -37,16 +37,28 @@ const CustomNavbar = () => {
 					</Nav>
 
 					<Navbar.Text>
-						<a href="#" target="_blank">
+						<a
+							href="https://www.facebook.com/subhadip6869"
+							target="_blank"
+						>
 							<i className="bi bi-facebook"></i>
 						</a>
-						<a href="#" target="_blank">
+						<a
+							href="https://www.instagram.com/subhadip6869/"
+							target="_blank"
+						>
 							<i className="bi bi-instagram"></i>
 						</a>
-						<a href="#" target="_blank">
+						<a
+							href="https://www.linkedin.com/in/subhadip6869/"
+							target="_blank"
+						>
 							<i className="bi bi-linkedin"></i>
 						</a>
-						<a href="#" target="_blank">
+						<a
+							href="https://github.com/subhadip6869/"
+							target="_blank"
+						>
 							<i className="bi bi-github"></i>
 						</a>
 					</Navbar.Text>
