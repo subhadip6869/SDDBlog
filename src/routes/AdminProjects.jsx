@@ -7,9 +7,11 @@ import {
     Modal,
     Table,
 } from "react-bootstrap";
+import { useNavigate } from "react-router";
 import { AdminNavbar } from "../components/metadata";
 import {
     addProject,
+    deleteProject,
     getCategories,
     getProjects,
     updateProject,
@@ -34,6 +36,8 @@ function AdminProjects() {
     const [storeLink, setStoreLink] = useState("");
     const [expLink, setExpLink] = useState("");
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         getCategories()
             .then((data) => {
@@ -54,6 +58,7 @@ function AdminProjects() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (saving) return;
         setValidated(true);
         if (!e.currentTarget.parentElement.checkValidity()) return;
         setSaving(true);
@@ -110,6 +115,27 @@ function AdminProjects() {
         }
     };
 
+    const handleDelete = async (id) => {
+        if (saving) return;
+        if (confirm("Are you sure you want to delete this project?")) {
+            setSaving(true);
+            let jwt = (await account.createJWT()).jwt;
+            try {
+                let data = await deleteProject({ id, signature: jwt });
+                if (data.code !== 200) {
+                    setModalMessage(data.error);
+                    setShowModal(true);
+                } else {
+                    fetchProjects();
+                }
+            } catch (err) {
+                console.log(err);
+            } finally {
+                setSaving(false);
+            }
+        }
+    };
+
     const populateEditProject = (proj) => {
         setId(proj["$id"]);
         setType(proj.project_categories["$id"]);
@@ -160,12 +186,25 @@ function AdminProjects() {
                         onClick={(e) => {
                             e.preventDefault();
                             populateEditProject(proj);
+                            document
+                                .getElementById("projectForm")
+                                .scrollIntoView({ behavior: "smooth" });
                         }}
                     >
                         <i className="bi bi-pencil-square"></i>
                     </a>
                 </td>
-                <td className="text-center"></td>
+                <td className="text-center">
+                    <a
+                        href=""
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleDelete(proj["$id"]);
+                        }}
+                    >
+                        <i className="bi bi-trash"></i>
+                    </a>
+                </td>
             </tr>
         ));
     };
@@ -194,7 +233,10 @@ function AdminProjects() {
             {/* Main content */}
             <Container fluid="md" className="mt-5">
                 {/* Form to add project */}
-                <div className="about-heading text-center pt-3">
+                <div
+                    className="about-heading text-center pt-3"
+                    id="projectForm"
+                >
                     Add Project
                 </div>
                 <div className="underline" />
@@ -277,7 +319,7 @@ function AdminProjects() {
                                 type="text"
                                 placeholder="Enter Project Description"
                                 required
-                                maxLength={200}
+                                maxLength={300}
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />

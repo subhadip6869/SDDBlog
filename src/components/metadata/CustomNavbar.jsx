@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { NavLink } from "react-router";
 import "../../assets/nav.css";
 import { getCategories } from "../../helpers/api";
 
@@ -19,48 +20,55 @@ const CustomNavbar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/resume">Resume</Nav.Link>
+                        <NavLink to="/" className="nav-link">
+                            Home
+                        </NavLink>
+                        <NavLink to="/resume" className="nav-link">
+                            Resume
+                        </NavLink>
                         <NavDropdown title="Works" id="basic-nav-dropdown">
                             {categories.map((cat) => {
                                 return (
-                                    <NavDropdown.Item
-                                        href={cat["$id"]}
+                                    <NavLink
+                                        className="dropdown-item"
+                                        to={"/works/" + cat["$id"]}
                                         key={cat["$id"]}
                                     >
                                         {cat.category_name}
-                                    </NavDropdown.Item>
+                                    </NavLink>
                                 );
                             })}
                         </NavDropdown>
-                        <Nav.Link href="/admin-login">Admin</Nav.Link>
+                        <NavLink to="/admin/login" className="nav-link">
+                            Admin
+                        </NavLink>
                     </Nav>
 
                     <Navbar.Text>
-                        <a
-                            href="https://www.facebook.com/subhadip6869"
+                        <NavLink
+                            to="https://www.facebook.com/subhadip6869"
                             target="_blank"
                         >
                             <i className="bi bi-facebook"></i>
-                        </a>
-                        <a
-                            href="https://www.instagram.com/subhadip6869/"
+                        </NavLink>
+                        <NavLink
+                            to="https://www.instagram.com/subhadip6869/"
                             target="_blank"
                         >
                             <i className="bi bi-instagram"></i>
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/subhadip6869/"
+                        </NavLink>
+                        <NavLink
+                            to="https://www.linkedin.com/in/subhadip6869/"
                             target="_blank"
                         >
                             <i className="bi bi-linkedin"></i>
-                        </a>
-                        <a
-                            href="https://github.com/subhadip6869/"
+                        </NavLink>
+                        <NavLink
+                            to="https://github.com/subhadip6869/"
                             target="_blank"
                         >
                             <i className="bi bi-github"></i>
-                        </a>
+                        </NavLink>
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

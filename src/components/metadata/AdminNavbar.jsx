@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import "../../assets/admin_login.css";
 import account from "../../helpers/appwrite_helper";
 
@@ -15,7 +15,7 @@ function AdminNavbar() {
                 setUser(user);
             } catch (_) {
                 setUser(null);
-                navigate("/admin-login");
+                navigate("/admin/login");
             }
         })();
     }, []);
@@ -27,18 +27,23 @@ function AdminNavbar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/admin-dashboard">Profile</Nav.Link>
+                        <NavLink to="/admin" className="nav-link">
+                            Profile
+                        </NavLink>
                         <NavDropdown title="Works" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/admin-projects">
+                            <NavLink
+                                to="/admin/projects"
+                                className="dropdown-item"
+                            >
                                 Projects
-                            </NavDropdown.Item>
+                            </NavLink>
                         </NavDropdown>
                     </Nav>
                     <Button
                         onClick={async () => {
                             try {
                                 await account.deleteSessions();
-                                navigate("/admin-login");
+                                navigate("/admin/login");
                             } catch (e) {
                                 alert("Something went wrong", e);
                             }

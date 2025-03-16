@@ -1,5 +1,7 @@
+const baseAPI = "http://localhost:3000/api";
+
 const getCategories = async () => {
-    const res = await fetch("http://localhost:3000/api/projects/categories");
+    const res = await fetch(`${baseAPI}/projects/categories`);
     const data = await res.json();
     return data;
 };
@@ -14,7 +16,7 @@ const addProject = async ({
     expLink,
     signature,
 }) => {
-    const res = await fetch("http://localhost:3000/api/projects", {
+    const res = await fetch(`${baseAPI}/projects`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -46,7 +48,7 @@ const updateProject = async ({
     expLink,
     signature,
 }) => {
-    const res = await fetch("http://localhost:3000/api/projects", {
+    const res = await fetch(`${baseAPI}/projects`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -70,12 +72,23 @@ const updateProject = async ({
 
 const getProjects = async ({ category_id } = {}) => {
     const res = await fetch(
-        `http://localhost:3000/api/projects/${
-            category_id ? "?category=" + category_id : ""
-        }`
+        `${baseAPI}/projects/${category_id ? "?category=" + category_id : ""}`
     );
     const data = await res.json();
     return data;
 };
 
-export { addProject, getCategories, getProjects, updateProject };
+const deleteProject = async ({ id, signature }) => {
+    const res = await fetch(`${baseAPI}/projects?id=${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+export { addProject, deleteProject, getCategories, getProjects, updateProject };

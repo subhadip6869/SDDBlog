@@ -13,10 +13,10 @@ const AdminLogin = () => {
             try {
                 const user = await account.get();
                 if (user) {
-                    navigate("/admin-dashboard");
+                    navigate("/admin");
                 }
             } catch (_) {
-                navigate("/admin-login");
+                navigate("/admin/login");
             }
         })();
     }, []);
@@ -85,7 +85,7 @@ const AdminLogin = () => {
                                         email,
                                         password
                                     );
-                                    navigate("/admin-dashboard");
+                                    navigate("/admin");
                                 } catch (error) {
                                     setErrorMsg(error.message);
                                 } finally {
