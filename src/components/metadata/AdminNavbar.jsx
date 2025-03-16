@@ -40,7 +40,7 @@ function AdminNavbar() {
                                 await account.deleteSessions();
                                 navigate("/admin-login");
                             } catch (e) {
-                                alert("Something went wrong");
+                                alert("Something went wrong", e);
                             }
                         }}
                     >

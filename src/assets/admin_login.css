@@ -18,3 +18,9 @@
     font-size: xx-large;
     font-weight: bold;
 }
+
+/* Disable the default check icon when form is validated by bootstrap */
+.form-control:valid, .form-select:valid {
+    background-image: none !important;
+    border: var(--bs-border-width) solid var(--bs-border-color) !important;
+}
