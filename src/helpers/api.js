@@ -1,5 +1,6 @@
 const baseAPI = "http://localhost:3000/api";
 
+// projects
 const getCategories = async () => {
     const res = await fetch(`${baseAPI}/projects/categories`);
     const data = await res.json();
@@ -91,4 +92,62 @@ const deleteProject = async ({ id, signature }) => {
     return { code: res.status, ...data };
 };
 
-export { addProject, deleteProject, getCategories, getProjects, updateProject };
+// skills
+const addSkill = async ({ name, percent, signature }) => {
+    const res = await fetch(`${baseAPI}/skills`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+        body: JSON.stringify({ name, percent: parseInt(percent) }),
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+const getSkills = async () => {
+    const res = await fetch(`${baseAPI}/skills`);
+    const data = await res.json();
+    return data;
+};
+
+const updateSkill = async ({ id, name, percent, signature }) => {
+    const res = await fetch(`${baseAPI}/skills?id=${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+        body: JSON.stringify({ name, percent: parseInt(percent) }),
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+const deleteSkill = async ({ id, signature }) => {
+    const res = await fetch(`${baseAPI}/skills?id=${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+export {
+    addProject,
+    addSkill,
+    deleteProject,
+    deleteSkill,
+    getCategories,
+    getProjects,
+    getSkills,
+    updateProject,
+    updateSkill,
+};

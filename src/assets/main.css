@@ -168,3 +168,12 @@
 .prog-knowledge {
     height: 5px;
 }
+
+::-webkit-slider-thumb {
+    background-color: #08bd80 !important;
+}
+
+::-moz-range-thumb,
+::-moz-range-progress {
+    background-color: #08bd80 !important;
+}

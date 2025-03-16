@@ -98,6 +98,7 @@ function AdminProjects() {
                 setModalMessage(data.error);
                 setShowModal(true);
             } else {
+                fetchProjects();
                 setId("");
                 setName("");
                 setVersion("");
@@ -110,7 +111,6 @@ function AdminProjects() {
         } catch (err) {
             console.log(err);
         } finally {
-            fetchProjects();
             setSaving(false);
         }
     };
@@ -145,6 +145,9 @@ function AdminProjects() {
         setDLink(proj.project_link || "");
         setStoreLink(proj.project_link_play || "");
         setExpLink(proj.project_explore || "");
+        document
+            .getElementById("projectForm")
+            .scrollIntoView({ behavior: "smooth" });
     };
 
     const generateProjectRows = () => {
@@ -186,9 +189,6 @@ function AdminProjects() {
                         onClick={(e) => {
                             e.preventDefault();
                             populateEditProject(proj);
-                            document
-                                .getElementById("projectForm")
-                                .scrollIntoView({ behavior: "smooth" });
                         }}
                     >
                         <i className="bi bi-pencil-square"></i>
@@ -381,6 +381,7 @@ function AdminProjects() {
 
                         {/* Submit Button */}
                         <Button
+                            variant="success"
                             type="submit"
                             className="btn btn-primary form-control"
                             onClick={(e) => handleSubmit(e)}

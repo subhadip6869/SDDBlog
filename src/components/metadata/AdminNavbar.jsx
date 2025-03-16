@@ -21,25 +21,35 @@ function AdminNavbar() {
     }, []);
 
     return (
-        <Navbar expand="lg" data-bs-theme="dark" bg="primary" fixed="top">
+        <Navbar expand="lg" data-bs-theme="dark" bg="dark" fixed="top">
             <Container fluid>
                 <Navbar.Brand href="/">Admin Panel</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to="/admin" className="nav-link">
-                            Profile
+                        <NavLink to="/" className="nav-link">
+                            Home
                         </NavLink>
-                        <NavDropdown title="Works" id="basic-nav-dropdown">
+                        <NavLink to="/admin" className="nav-link">
+                            Dashboard
+                        </NavLink>
+                        <NavDropdown title="Edit Data" id="basic-nav-dropdown">
                             <NavLink
-                                to="/admin/projects"
+                                to="/admin-edit/projects"
                                 className="dropdown-item"
                             >
                                 Projects
                             </NavLink>
+                            <NavLink
+                                to="/admin-edit/skills"
+                                className="dropdown-item"
+                            >
+                                Skills
+                            </NavLink>
                         </NavDropdown>
                     </Nav>
                     <Button
+                        variant="dark"
                         onClick={async () => {
                             try {
                                 await account.deleteSessions();
