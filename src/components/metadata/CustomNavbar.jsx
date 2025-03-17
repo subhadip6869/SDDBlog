@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router";
+import "../../assets/main.css";
 import "../../assets/nav.css";
 import { getCategories } from "../../helpers/api";
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import "../assets/admin_login.css";
-import { CustomNavbar } from "../components/metadata";
-import account from "../helpers/appwrite_helper";
+import "../../assets/admin_login.css";
+import { CustomNavbar } from "../../components/metadata";
+import account from "../../helpers/appwrite_helper";
 
 const AdminLogin = () => {
     const navigate = useNavigate();

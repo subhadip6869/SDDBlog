@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Table } from "react-bootstrap";
-import { AdminNavbar } from "../components/metadata";
+import { AdminNavbar } from "../../components/metadata";
 import {
     addEducation,
     deleteEducation,
     getEducations,
     updateEducation,
-} from "../helpers/api";
-import account from "../helpers/appwrite_helper";
+} from "../../helpers/api";
+import account from "../../helpers/appwrite_helper";
 
 function AdminEducation() {
     const [showModal, setShowModal] = useState(false);
@@ -306,7 +306,7 @@ function AdminEducation() {
                             <tbody>{generateEducationRows()}</tbody>
                         </Table>
                     ) : (
-                        <div className="text-center">No Skills Found</div>
+                        <div className="text-center">No Courses Found</div>
                     )}
                 </Container>
             </Container>

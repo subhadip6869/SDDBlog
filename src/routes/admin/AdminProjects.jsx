@@ -8,15 +8,15 @@ import {
     Table,
 } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { AdminNavbar } from "../components/metadata";
+import { AdminNavbar } from "../../components/metadata";
 import {
     addProject,
     deleteProject,
     getCategories,
     getProjects,
     updateProject,
-} from "../helpers/api";
-import account from "../helpers/appwrite_helper";
+} from "../../helpers/api";
+import account from "../../helpers/appwrite_helper";
 
 function AdminProjects() {
     const [categories, setCategories] = useState([]);

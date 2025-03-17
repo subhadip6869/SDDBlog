@@ -1,5 +1,5 @@
 import React from "react";
-import { AdminNavbar } from "../components/metadata";
+import { AdminNavbar } from "../../components/metadata";
 
 const AdminDashboard = () => {
     return (

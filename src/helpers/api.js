@@ -205,18 +205,93 @@ const updateEducation = async ({
     return { code: res.status, ...data };
 };
 
+// interests
+const getInterests = async () => {
+    const res = await fetch(`${baseAPI}/interests`);
+    const data = await res.json();
+    return data;
+};
+
+const addInterest = async ({
+    bootstrapIconClass,
+    title,
+    description,
+    percent,
+    signature,
+}) => {
+    const res = await fetch(`${baseAPI}/interests`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+        body: JSON.stringify({
+            bootstrap_icon_class: bootstrapIconClass,
+            interest_title: title,
+            interest_desc: description,
+            skill_percent: parseInt(percent),
+        }),
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+const deleteInterest = async ({ id, signature }) => {
+    const res = await fetch(`${baseAPI}/interests?id=${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+const updateInterest = async ({
+    id,
+    bootstrapIconClass,
+    title,
+    description,
+    percent,
+    signature,
+}) => {
+    const res = await fetch(`${baseAPI}/interests?id=${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+        body: JSON.stringify({
+            bootstrap_icon_class: bootstrapIconClass,
+            interest_title: title,
+            interest_desc: description,
+            skill_percent: parseInt(percent),
+        }),
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
 export {
     addEducation,
+    addInterest,
     addProject,
     addSkill,
     deleteEducation,
+    deleteInterest,
     deleteProject,
     deleteSkill,
     getCategories,
     getEducations,
+    getInterests,
     getProjects,
     getSkills,
     updateEducation,
+    updateInterest,
     updateProject,
     updateSkill,
 };

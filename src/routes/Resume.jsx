@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
+import "../assets/main.css";
 import { CustomProgressBar } from "../components";
 import { CustomNavbar } from "../components/metadata";
 import { getEducations, getSkills } from "../helpers/api";

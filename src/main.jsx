@@ -1,13 +1,16 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
-import AdminDashboard from "./routes/AdminDashboard";
-import AdminEducation from "./routes/AdminEducation";
-import AdminLogin from "./routes/AdminLogin";
-import AdminProjects from "./routes/AdminProjects";
-import AdminSkills from "./routes/AdminSkills";
 import App from "./routes/App";
 import Resume from "./routes/Resume";
 import Works from "./routes/Works";
+import {
+    AdminDashboard,
+    AdminEducation,
+    AdminInterests,
+    AdminLogin,
+    AdminProjects,
+    AdminSkills,
+} from "./routes/admin";
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
@@ -21,7 +24,8 @@ createRoot(document.getElementById("root")).render(
             <Route path="admin-edit">
                 <Route path="projects" element={<AdminProjects />} />
                 <Route path="skills" element={<AdminSkills />} />
-                <Route path="education" element={<AdminEducation />} />
+                <Route path="educations" element={<AdminEducation />} />
+                <Route path="interests" element={<AdminInterests />} />
             </Route>
             <Route path="works">
                 <Route path=":category" element={<Works />} />
