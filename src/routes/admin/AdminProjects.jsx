@@ -8,7 +8,7 @@ import {
     Table,
 } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { AdminNavbar } from "../../components/metadata";
+import { AdminNavbar, CustomFooter } from "../../components/metadata";
 import {
     addProject,
     deleteProject,
@@ -431,6 +431,8 @@ function AdminProjects() {
                     )}
                 </Container>
             </Container>
+
+            <CustomFooter />
         </>
     );
 }

@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import "../assets/App.css";
 import { CustomProgressBar } from "../components";
-import { CustomNavbar } from "../components/metadata";
+import { CustomFooter, CustomNavbar } from "../components/metadata";
 import { getInterests } from "../helpers/api";
 
 function App() {
@@ -162,6 +162,8 @@ function App() {
                     ))}
                 </Row>
             </Container>
+
+            <CustomFooter />
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import "../../assets/admin_login.css";
-import { CustomNavbar } from "../../components/metadata";
+import { CustomFooter, CustomNavbar } from "../../components/metadata";
 import account from "../../helpers/appwrite_helper";
 
 const AdminLogin = () => {
@@ -111,6 +111,8 @@ const AdminLogin = () => {
                     </Form>
                 </Container>
             </Container>
+
+            <CustomFooter />
         </div>
     );
 };

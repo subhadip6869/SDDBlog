@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { NavLink, useParams } from "react-router";
-import { CustomNavbar } from "../components/metadata";
+import { CustomFooter, CustomNavbar } from "../components/metadata";
 import { getCategories, getProjects } from "../helpers/api";
 
 import "../assets/works.css";
@@ -104,6 +104,8 @@ function Works() {
                     })}
                 </Row>
             </Container>
+
+            <CustomFooter />
         </div>
     );
 }

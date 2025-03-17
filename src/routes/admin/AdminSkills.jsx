@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Table } from "react-bootstrap";
 import "../../assets/admin_login.css";
-import { AdminNavbar } from "../../components/metadata";
+import { AdminNavbar, CustomFooter } from "../../components/metadata";
 import {
     addSkill,
     deleteSkill,
@@ -245,6 +245,8 @@ function AdminSkills() {
                     )}
                 </Container>
             </Container>
+
+            <CustomFooter />
         </>
     );
 }

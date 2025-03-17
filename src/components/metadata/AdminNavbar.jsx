@@ -27,9 +27,6 @@ function AdminNavbar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to="/" className="nav-link">
-                            Home
-                        </NavLink>
                         <NavLink to="/admin" className="nav-link">
                             Dashboard
                         </NavLink>

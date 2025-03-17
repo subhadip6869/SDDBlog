@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import "../assets/main.css";
 import { CustomProgressBar } from "../components";
-import { CustomNavbar } from "../components/metadata";
+import { CustomFooter, CustomNavbar } from "../components/metadata";
 import { getEducations, getSkills } from "../helpers/api";
 
 function Resume() {
@@ -163,6 +163,8 @@ function Resume() {
                     ))}
                 </Row>
             </Container>
+
+            <CustomFooter />
         </div>
     );
 }
