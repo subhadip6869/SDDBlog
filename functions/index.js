@@ -1,21 +1,21 @@
 require("dotenv").config();
 const cors = require("cors");
 const {
-	interestRouter,
-	educationRouter,
-	projectRouter,
-	skillRouter,
+    interestRouter,
+    educationRouter,
+    projectRouter,
+    skillRouter,
 } = require("./routers");
 const express = require("express");
 const app = express();
 
 app.use(
-	cors({
-		origin: "*",
-		methods: "GET,PUT,POST,DELETE",
-		credentials: true,
-		allowedHeaders: "Content-Type, Authorization",
-	})
+    cors({
+        origin: "*",
+        methods: "GET,PUT,POST,DELETE",
+        credentials: true,
+        allowedHeaders: "Content-Type, Authorization, x-appwrite-signature",
+    })
 );
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,5 +33,5 @@ router.use("/skills", skillRouter);
 app.use("/api", router);
 
 app.listen(PORT, () => {
-	console.log(`Server running at ${HOST}:${PORT}`);
+    console.log(`Server running at ${HOST}:${PORT}`);
 });

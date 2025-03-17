@@ -4,21 +4,21 @@ const express = require("express");
 const serverless = require("serverless-http");
 const cors = require("cors");
 const {
-	interestRouter,
-	educationRouter,
-	projectRouter,
-	skillRouter,
+    interestRouter,
+    educationRouter,
+    projectRouter,
+    skillRouter,
 } = require("./routers");
 
 const app = express();
 
 app.use(
-	cors({
-		origin: "*",
-		methods: "GET,PUT,POST,DELETE",
-		credentials: true,
-		allowedHeaders: "Content-Type, Authorization",
-	})
+    cors({
+        origin: "dsubha.netlify.app",
+        methods: "GET,PUT,POST,DELETE",
+        credentials: true,
+        allowedHeaders: "Content-Type, Authorization, x-appwrite-signature",
+    })
 );
 
 const router = express.Router();

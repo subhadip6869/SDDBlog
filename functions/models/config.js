@@ -13,7 +13,7 @@ function generateDBAuth({ jwt }) {
     clientAuth
         .setEndpoint("https://cloud.appwrite.io/v1")
         .setProject(process.env.APPWRITE_PROJECT_ID)
-        .setKey(process.env.APPWRITE_API_KEY)
+        // .setKey(process.env.APPWRITE_API_KEY)
         .setJWT(jwt);
     return new sdk.Databases(clientAuth);
 }

@@ -106,7 +106,7 @@ educationRouter.delete("/", async (req, res) => {
             .status(401)
             .json({ error: "Appwrite signature not found in the header" });
     try {
-        await deleteEducation(req.query.id, signature);
+        await deleteEducation(req.query.id, { signature });
         res.status(200).json({ message: "Education deleted successfully" });
     } catch (error) {
         res.status(error.code || 500).json({ error: error.message });
