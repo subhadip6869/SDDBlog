@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Table } from "react-bootstrap";
-import { AdminNavbar, CustomFooter } from "../../components/metadata";
+import AdminTemplate from "../../components/AdminTemplate";
 import {
     addEducation,
     deleteEducation,
@@ -166,10 +166,7 @@ function AdminEducation() {
     };
 
     return (
-        <>
-            {/* Admin Navbar */}
-            <AdminNavbar />
-
+        <AdminTemplate>
             {/* Modal to show error message */}
             <Modal
                 show={showModal}
@@ -310,9 +307,7 @@ function AdminEducation() {
                     )}
                 </Container>
             </Container>
-
-            <CustomFooter />
-        </>
+        </AdminTemplate>
     );
 }
 

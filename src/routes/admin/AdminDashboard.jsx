@@ -1,14 +1,8 @@
 import React from "react";
-import { AdminNavbar, CustomFooter } from "../../components/metadata";
+import AdminTemplate from "../../components/AdminTemplate";
 
 const AdminDashboard = () => {
-    return (
-        <>
-            <AdminNavbar />
-
-            <CustomFooter />
-        </>
-    );
+    return <AdminTemplate />;
 };
 
 export default AdminDashboard;

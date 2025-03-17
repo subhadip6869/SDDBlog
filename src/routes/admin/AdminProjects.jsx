@@ -8,7 +8,7 @@ import {
     Table,
 } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { AdminNavbar, CustomFooter } from "../../components/metadata";
+import AdminTemplate from "../../components/AdminTemplate";
 import {
     addProject,
     deleteProject,
@@ -210,10 +210,7 @@ function AdminProjects() {
     };
 
     return (
-        <>
-            {/* Admin Navbar */}
-            <AdminNavbar />
-
+        <AdminTemplate>
             {/* Modal to show error message */}
             <Modal
                 show={showModal}
@@ -431,9 +428,7 @@ function AdminProjects() {
                     )}
                 </Container>
             </Container>
-
-            <CustomFooter />
-        </>
+        </AdminTemplate>
     );
 }
 

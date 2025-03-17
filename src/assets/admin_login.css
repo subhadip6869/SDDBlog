@@ -13,12 +13,6 @@
     font-size: 1.2rem;
 }
 
-.about-heading {
-    color: rgb(142, 142, 248);
-    font-size: xx-large;
-    font-weight: bold;
-}
-
 /* Disable the default check icon when form is validated by bootstrap */
 .form-control:valid, .form-select:valid {
     background-image: none !important;

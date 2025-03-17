@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import "../../assets/admin_login.css";
-import { CustomFooter, CustomNavbar } from "../../components/metadata";
+import PageTemplate from "../../components/PageTemplate";
 import account from "../../helpers/appwrite_helper";
 
 const AdminLogin = () => {
@@ -27,9 +27,7 @@ const AdminLogin = () => {
     const [loading, setLoading] = useState(false);
 
     return (
-        <div className="wrapper">
-            <CustomNavbar />
-
+        <PageTemplate>
             <Container fluid="md" className="mt-5 login-container">
                 <div className="about-heading text-center">
                     Admin Panel Login
@@ -111,9 +109,7 @@ const AdminLogin = () => {
                     </Form>
                 </Container>
             </Container>
-
-            <CustomFooter />
-        </div>
+        </PageTemplate>
     );
 };
 

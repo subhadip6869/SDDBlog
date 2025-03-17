@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Table } from "react-bootstrap";
 import "../../assets/admin_login.css";
-import { AdminNavbar, CustomFooter } from "../../components/metadata";
+import AdminTemplate from "../../components/AdminTemplate";
 import {
     addSkill,
     deleteSkill,
@@ -138,10 +138,7 @@ function AdminSkills() {
     };
 
     return (
-        <>
-            {/* Admin Navbar */}
-            <AdminNavbar />
-
+        <AdminTemplate>
             {/* Modal to show error message */}
             <Modal
                 show={showModal}
@@ -245,9 +242,7 @@ function AdminSkills() {
                     )}
                 </Container>
             </Container>
-
-            <CustomFooter />
-        </>
+        </AdminTemplate>
     );
 }
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import "../assets/main.css";
 import { CustomProgressBar } from "../components";
-import { CustomFooter, CustomNavbar } from "../components/metadata";
+import PageTemplate from "../components/PageTemplate";
 import { getEducations, getSkills } from "../helpers/api";
 
 function Resume() {
@@ -33,9 +33,7 @@ function Resume() {
     }, []);
 
     return (
-        <div className="wrapper">
-            <CustomNavbar />
-
+        <PageTemplate>
             <Container fluid="md" className="mt-5">
                 <div className="about-heading text-center pt-3">
                     Personal Details
@@ -163,9 +161,7 @@ function Resume() {
                     ))}
                 </Row>
             </Container>
-
-            <CustomFooter />
-        </div>
+        </PageTemplate>
     );
 }
 

@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router";
 import "../../assets/footer.css";
-import { getCategories } from "../../helpers/api";
 
-function CustomFooter() {
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        getCategories()
-            .then((data) => setCategories(data))
-            .catch((err) => console.log(err));
-    }, []);
-
+function CustomFooter({ categories = [] }) {
     return (
         <div className="container-fluid-lg text-center p-3 mt-3 text-white footer">
             <p className="fs-5">Thanks for visiting here! :)</p>

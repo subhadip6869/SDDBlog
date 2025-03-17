@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router";
 import "../../assets/main.css";
 import "../../assets/nav.css";
-import { getCategories } from "../../helpers/api";
 
-const CustomNavbar = () => {
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        getCategories()
-            .then((data) => setCategories(data))
-            .catch((err) => console.log(err));
-    }, []);
-
+const CustomNavbar = ({ categories = [] }) => {
     return (
         <Navbar expand="lg" data-bs-theme="dark" bg="dark" fixed="top">
             <Container fluid>

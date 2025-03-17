@@ -10,8 +10,9 @@ import {
     Table,
 } from "react-bootstrap";
 import "../assets/App.css";
+import "../assets/main.css";
 import { CustomProgressBar } from "../components";
-import { CustomFooter, CustomNavbar } from "../components/metadata";
+import PageTemplate from "../components/PageTemplate";
 import { getInterests } from "../helpers/api";
 
 function App() {
@@ -31,10 +32,7 @@ function App() {
     }, []);
 
     return (
-        <div className="wrapper">
-            {/* Navigation bar */}
-            <CustomNavbar />
-
+        <PageTemplate>
             {/* background image section */}
             <Container fluid className="background-image">
                 <Row className="myrow align-items-center">
@@ -144,7 +142,7 @@ function App() {
 
                 <Row className="align-items-center gx-3 gy-3">
                     {interests.map((intr) => (
-                        <Col md="6" className="interests" key={intr.id}>
+                        <Col md="6" className="interests" key={intr["$id"]}>
                             <div className="element">
                                 <p className="fs-4 fw-bold">
                                     <i className={intr.intr_icon} />{" "}
@@ -162,9 +160,7 @@ function App() {
                     ))}
                 </Row>
             </Container>
-
-            <CustomFooter />
-        </div>
+        </PageTemplate>
     );
 }
 

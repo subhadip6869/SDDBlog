@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { NavLink, useParams } from "react-router";
-import { CustomFooter, CustomNavbar } from "../components/metadata";
-import { getCategories, getProjects } from "../helpers/api";
+import PageTemplate from "../components/PageTemplate";
+import { getProjects } from "../helpers/api";
 
 import "../assets/works.css";
+import { useCategories } from "../main";
+
+const CategoriesDisplay = ({ category }) => {
+    // Since useCategories() relies on CategoryContext.Provider, calling it outside that provider will result in an error.
+    const categories = useCategories(); // Now it's safely inside PageTemplate
+    return (
+        <>
+            <div className="about-heading text-center mt-5 pt-3">
+                {categories.find((c) => c["$id"] == category)?.category_name ||
+                    category}
+            </div>
+            <div className="underline"></div>
+        </>
+    );
+};
 
 function Works() {
     const { category } = useParams();
 
     const [projects, setProjects] = useState([]);
-    const [categories, setCategories] = useState([]);
-    useEffect(() => {
-        fetchCategories();
-    }, []);
 
     useEffect(() => {
         fetchProjects();
@@ -28,25 +39,20 @@ function Works() {
         }
     };
 
-    const fetchCategories = async () => {
-        try {
-            let data = await getCategories();
-            setCategories(data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    // const fetchCategories = async () => {
+    //     try {
+    //         let data = await getCategories();
+    //         setCategories(data);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 
     return (
-        <div className="wrapper">
-            <CustomNavbar />
-
+        <PageTemplate>
             <Container fluid="md" className="projects-container">
-                <div className="about-heading text-center mt-5 pt-3">
-                    {categories.filter((c) => c["$id"] == category)[0]
-                        ?.category_name || category}
-                </div>
-                <div className="underline"></div>
+                {/* Now we are inside the PageTemplate's provider, so it's safe to use useCategories */}
+                <CategoriesDisplay category={category} />
 
                 <Row className="align-items-center gx-3 gy-3">
                     {projects.map((proj) => {
@@ -104,9 +110,7 @@ function Works() {
                     })}
                 </Row>
             </Container>
-
-            <CustomFooter />
-        </div>
+        </PageTemplate>
     );
 }
 
