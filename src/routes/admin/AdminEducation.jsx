@@ -7,7 +7,7 @@ import {
     getEducations,
     updateEducation,
 } from "../../helpers/api";
-import account from "../../helpers/appwrite_helper";
+import { account } from "../../helpers/appwrite_helper";
 
 function AdminEducation() {
     const [showModal, setShowModal] = useState(false);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router";
 import "../../assets/admin_login.css";
-import account from "../../helpers/appwrite_helper";
+import { account } from "../../helpers/appwrite_helper";
 
 function AdminNavbar() {
     const [user, setUser] = useState(null);
@@ -54,6 +54,12 @@ function AdminNavbar() {
                                 className="dropdown-item"
                             >
                                 Interests
+                            </NavLink>
+                            <NavLink
+                                to="/admin-edit/achievements"
+                                className="dropdown-item"
+                            >
+                                Achievements
                             </NavLink>
                         </NavDropdown>
                     </Nav>

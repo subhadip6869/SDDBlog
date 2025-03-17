@@ -8,7 +8,7 @@ import {
     getSkills,
     updateSkill,
 } from "../../helpers/api";
-import account from "../../helpers/appwrite_helper";
+import { account } from "../../helpers/appwrite_helper";
 
 function AdminSkills() {
     const [showModal, setShowModal] = useState(false);

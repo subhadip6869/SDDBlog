@@ -4,6 +4,7 @@ import App from "./routes/App";
 import Resume from "./routes/Resume";
 import Works from "./routes/Works";
 import {
+    AdminAchievements,
     AdminDashboard,
     AdminEducation,
     AdminInterests,
@@ -50,6 +51,10 @@ createRoot(document.getElementById("root")).render(
                     <Route path="skills" element={<AdminSkills />} />
                     <Route path="educations" element={<AdminEducation />} />
                     <Route path="interests" element={<AdminInterests />} />
+                    <Route
+                        path="achievements"
+                        element={<AdminAchievements />}
+                    />
                 </Route>
                 <Route path="works">
                     <Route path=":category" element={<Works />} />

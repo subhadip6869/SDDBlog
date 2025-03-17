@@ -3,7 +3,7 @@ import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import "../../assets/admin_login.css";
 import PageTemplate from "../../components/PageTemplate";
-import account from "../../helpers/appwrite_helper";
+import { account } from "../../helpers/appwrite_helper";
 
 const AdminLogin = () => {
     const navigate = useNavigate();

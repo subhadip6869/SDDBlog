@@ -16,7 +16,7 @@ import {
     getProjects,
     updateProject,
 } from "../../helpers/api";
-import account from "../../helpers/appwrite_helper";
+import { account } from "../../helpers/appwrite_helper";
 
 function AdminProjects() {
     const [categories, setCategories] = useState([]);

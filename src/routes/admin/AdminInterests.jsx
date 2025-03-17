@@ -7,7 +7,7 @@ import {
     getInterests,
     updateInterest,
 } from "../../helpers/api";
-import account from "../../helpers/appwrite_helper";
+import { account } from "../../helpers/appwrite_helper";
 
 function AdminInterests() {
     const [showModal, setShowModal] = useState(false);
