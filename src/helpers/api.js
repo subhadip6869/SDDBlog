@@ -140,14 +140,83 @@ const deleteSkill = async ({ id, signature }) => {
     return { code: res.status, ...data };
 };
 
+// education
+const addEducation = async ({ course, description, start, end, signature }) => {
+    const res = await fetch(`${baseAPI}/education`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+        body: JSON.stringify({
+            course,
+            description,
+            start_period: start,
+            end_period: end,
+        }),
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+const getEducations = async () => {
+    const res = await fetch(`${baseAPI}/education`);
+    const data = await res.json();
+    return data;
+};
+
+const deleteEducation = async ({ id, signature }) => {
+    const res = await fetch(`${baseAPI}/education?id=${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
+const updateEducation = async ({
+    id,
+    course,
+    description,
+    start,
+    end,
+    signature,
+}) => {
+    const res = await fetch(`${baseAPI}/education?id=${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "x-appwrite-signature": signature,
+        },
+        body: JSON.stringify({
+            course,
+            description,
+            start_period: start,
+            end_period: end,
+        }),
+    });
+
+    const data = await res.json();
+    return { code: res.status, ...data };
+};
+
 export {
+    addEducation,
     addProject,
     addSkill,
+    deleteEducation,
     deleteProject,
     deleteSkill,
     getCategories,
+    getEducations,
     getProjects,
     getSkills,
+    updateEducation,
     updateProject,
     updateSkill,
 };

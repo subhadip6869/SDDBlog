@@ -188,7 +188,7 @@ function AdminSkills() {
                                 onChange={(e) =>
                                     setSkillPercent(e.target.value)
                                 }
-                                name="skillName"
+                                name="skillPercent"
                                 required
                             />
                         </Form.Group>

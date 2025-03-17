@@ -46,6 +46,12 @@ function AdminNavbar() {
                             >
                                 Skills
                             </NavLink>
+                            <NavLink
+                                to="/admin-edit/education"
+                                className="dropdown-item"
+                            >
+                                Education
+                            </NavLink>
                         </NavDropdown>
                     </Nav>
                     <Button
