@@ -1,4 +1,5 @@
-const baseAPI = "http://localhost:3000/api";
+// const baseAPI = "http://localhost:3000/api";
+const baseAPI = "https://dsubha.netlify.app/api";
 
 // projects
 const getCategories = async () => {
