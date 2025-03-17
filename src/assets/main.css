@@ -177,3 +177,7 @@
 ::-moz-range-progress {
     background-color: #08bd80 !important;
 }
+
+#image-preview:hover {
+    transform: scale(1.1);
+}

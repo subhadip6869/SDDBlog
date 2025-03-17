@@ -1,18 +1,111 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Col, Container, Modal, Row, Table } from "react-bootstrap";
 import "../assets/main.css";
 import { CustomProgressBar } from "../components";
 import PageTemplate from "../components/PageTemplate";
 import { getEducations, getSkills } from "../helpers/api";
+import { storage } from "../helpers/appwrite_helper";
+
+function Achievement({ file }) {
+    const [hover, setHover] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [viewUrl, setViewUrl] = useState("");
+
+    return (
+        <>
+            <Modal
+                fullscreen
+                centered
+                show={showModal}
+                onHide={() => {
+                    setShowModal(false);
+                    setViewUrl("");
+                }}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>{file.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div
+                        style={{
+                            backgroundColor: "#000000",
+                            height: "100%",
+                            width: "100%",
+                            backgroundImage: `url(${viewUrl})`,
+                            backgroundSize: "contain",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                        }}
+                    />
+                </Modal.Body>
+            </Modal>
+            <div
+                id="image-preview"
+                className="rounded"
+                style={{
+                    height: "10rem",
+                    position: "relative",
+                    transition: "0.3s",
+                    backgroundImage: `url(${storage.getFilePreview(
+                        "achievements",
+                        file.$id,
+                        150,
+                        100
+                    )})`,
+                    cursor: "pointer",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                }}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                onClick={async () => {
+                    setViewUrl(
+                        await storage.getFileView("achievements", file.$id)
+                    );
+                    setShowModal(true);
+                }}
+            >
+                {hover && (
+                    <div
+                        className="d-flex align-items-end text-white p-2"
+                        style={{
+                            width: "100%",
+                            height: "70%",
+                            background:
+                                "linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.5), rgba(0,0,0,0.01))",
+                            position: "absolute",
+                            bottom: 0,
+                            left: 0,
+                            backdropFilter: "blur(2px)",
+                        }}
+                    >
+                        {file.name}
+                    </div>
+                )}
+            </div>
+        </>
+    );
+}
 
 function Resume() {
     const [skills, setSkills] = useState([]);
     const [educations, setEducations] = useState([]);
 
+    const [savedFiles, setSavedFiles] = useState([]);
+
     const fetchSkills = async () => {
         try {
             let data = await getSkills();
             setSkills(data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const fetchAllFiles = async () => {
+        try {
+            let data = await storage.listFiles("achievements");
+            setSavedFiles(data.files);
         } catch (err) {
             console.log(err);
         }
@@ -30,6 +123,7 @@ function Resume() {
     useEffect(() => {
         fetchSkills();
         fetchEducations();
+        fetchAllFiles();
     }, []);
 
     return (
@@ -157,6 +251,20 @@ function Resume() {
                                     progressStyle={{ height: "1ch" }}
                                 />
                             </div>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
+
+            <Container fluid="md" className="mt-5">
+                <div className="about-heading text-center pt-3">
+                    Certificates & Achievements
+                </div>
+                <div className="underline"></div>
+                <Row className="align-items-center gx-2 gy-2">
+                    {savedFiles.map((file) => (
+                        <Col sm="3" key={file["$id"]}>
+                            <Achievement file={file} />
                         </Col>
                     ))}
                 </Row>

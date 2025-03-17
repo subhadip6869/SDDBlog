@@ -9,11 +9,13 @@ function AchievementImage({ file, onDelete }) {
 
     return (
         <div
-            // key={file.$id}
+            id="image-preview"
+            key={file.$id}
             style={{
                 height: 150,
                 width: 150,
                 position: "relative",
+                transition: "0.3s",
                 backgroundImage: `url(${storage.getFilePreview(
                     "achievements",
                     file.$id,
@@ -22,34 +24,57 @@ function AchievementImage({ file, onDelete }) {
                     ImageGravity.Center,
                     10
                 )})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                borderRadius: "8px",
+                boxShadow: "0px 4px 8px rgba(0,0,0,0.2)",
+                overflow: "hidden",
             }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
             {/* Delete button appears on hover */}
             {hovered && (
-                <button
-                    onClick={() => onDelete(file.$id)}
-                    style={{
-                        position: "absolute",
-                        top: "5px",
-                        right: "5px",
-                        backgroundColor: "rgba(255, 0, 0, 0.8)",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "50%",
-                        width: "30px",
-                        height: "30px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "16px",
-                        cursor: "pointer",
-                        boxShadow: "0px 2px 5px rgba(0,0,0,0.2)",
-                    }}
-                >
-                    &times;
-                </button>
+                <>
+                    <button
+                        onClick={() => onDelete(file.$id)}
+                        style={{
+                            position: "absolute",
+                            top: "0px",
+                            right: "0px",
+                            backgroundColor: "rgba(255, 0, 0, 0.8)",
+                            color: "white",
+                            border: "none",
+                            borderBottomLeftRadius: "80%",
+                            width: "30px",
+                            height: "30px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            cursor: "pointer",
+                            boxShadow: "0px 2px 5px rgba(0,0,0,0.2)",
+                        }}
+                    >
+                        <i className="bi bi-trash" />
+                    </button>
+                    <div
+                        style={{
+                            position: "absolute",
+                            bottom: "0px",
+                            left: "0px",
+                            background:
+                                "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2))",
+                            border: "none",
+                            color: "white",
+                            textOverflow: "ellipsis",
+                            overflow: "clip",
+                            width: "100%",
+                            height: "30%",
+                        }}
+                    >
+                        {file.name}
+                    </div>
+                </>
             )}
         </div>
     );
@@ -227,17 +252,31 @@ function AdminAchievements() {
                 </Container>
             </Container>
 
-            {savedFiles.map((f) => (
-                // TODO: Need to fix the components UI for the files
-                <AchievementImage
-                    file={f}
-                    key={f.$id}
-                    onDelete={async () => {
-                        await storage.deleteFile("achievements", f.$id);
-                        fetchAllFiles();
-                    }}
-                />
-            ))}
+            {/* List Available Projects */}
+            <div className="about-heading text-center pt-3">
+                Available Achievements
+            </div>
+            <div className="underline" />
+
+            <Container fluid="sm d-flex gap-3 flex-wrap">
+                {savedFiles.length > 0 ? (
+                    savedFiles.map((f) => (
+                        // TODO: Need to fix the components UI for the files
+                        <AchievementImage
+                            file={f}
+                            key={f.$id}
+                            onDelete={async () => {
+                                await storage.deleteFile("achievements", f.$id);
+                                fetchAllFiles();
+                            }}
+                        />
+                    ))
+                ) : (
+                    <div className="text-center w-100">
+                        No files uploaded yet
+                    </div>
+                )}
+            </Container>
         </AdminTemplate>
     );
 }
